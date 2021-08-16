@@ -5,6 +5,13 @@
 
 
 -----
+Team Member
+Amalia Putri Yulandi [BE]
+Nadia Darin Putri Adinda [BE]
+Asdar [FE]
+Fajar Wahyu [FE]
+Edwin Kesuma [RN]
+
 Create a simple app like inst*gram that can post and see photos that you can upload.
 
 **BE**
