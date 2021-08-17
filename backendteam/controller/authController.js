@@ -19,20 +19,20 @@ exports.signup = async (req, res) => {
         password: hashedPassword,
       });
 
-      res.status(201).send({
+      res.status(201).json({
         statusCode: 201,
         statusText: "Created",
         message: "Signup Success",
       });
     } else {
-      res.status(400).send({
+      res.status(400).json({
         statusCode: 400,
         statusText: "Bad Request",
         message: "Signup Failed",
       });
     }
   } catch (error) {
-    res.status(500).send({
+    res.status(500).json({
       statusCode: 500,
       statusText: "Internal Server Error",
       message: "Signup Failed",
@@ -59,7 +59,7 @@ exports.login = async (req, res) => {
           process.env.SECRET_KEY
         );
 
-        res.status(200).send({
+        res.status(200).json({
           statusCode: 200,
           statusText: "OK",
           message: "Login Success",
@@ -80,7 +80,7 @@ exports.login = async (req, res) => {
       });
     }
   } catch (error) {
-    res.status(500).send({
+    res.status(500).json({
       statusCode: 500,
       statusText: "Internal Server Error",
       message: "Login Failed",
@@ -102,7 +102,7 @@ exports.logout = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).send({
+    res.status(500).json({
       statusCode: 500,
       statusText: "Internal Server Error",
       message: "Logout Failed",
