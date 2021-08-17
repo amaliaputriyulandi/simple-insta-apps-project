@@ -47,12 +47,13 @@ exports.login = async (req, res) => {
     const findUser = await User.findOne({ email }).exec();
 
     if (findUser) {
-      const session_id = uuidv4();
-      findUser.session_id = session_id;
-      findUser.save();
       const checkPassword = await bcrypt.compare(password, findUser.password);
 
       if (checkPassword) {
+        const session_id = uuidv4();
+        findUser.session_id = session_id;
+        findUser.save();
+
         const generateToken = await jwt.sign(
           { id: findUser._id, session_id },
           process.env.SECRET_KEY
