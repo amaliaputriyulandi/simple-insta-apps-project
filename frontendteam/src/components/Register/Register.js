@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Register.css'
 import person from '../../assets/person.jpg'
 import playstore from '../../assets/playstore.png'
@@ -8,10 +8,18 @@ import { useHistory } from 'react-router'
 
 const Register = () =>{
     const history = useHistory()
+    const [disabled, setDisabled] = useState(true)
 
     const handleSignIn = () =>{
         history.push('/Login')
+       
     }
+
+    const handleCB = () =>{
+        setDisabled(!disabled)
+        
+    }
+    console.log(disabled)
 
     return(
         <div>
@@ -43,11 +51,11 @@ const Register = () =>{
                                 <input type='password' placeholder='Enter your Password here'/>
                             </div>
                             <div className='term'>
-                                <input type='checkbox'/>
+                                <input type='checkbox' onClick={handleCB}/>
                                 By signing up, you agree to <span>Term Of Service</span>
                             </div>
                             <div>
-                                <input type='submit' value='Register'/>
+                                <input type='submit' value='Register' disabled={disabled}/>
                             </div>
                             <div className='confirm'>
                                 Already have an Account? <span onClick={handleSignIn}>Sign In</span>
