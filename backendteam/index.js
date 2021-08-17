@@ -5,7 +5,7 @@ const logger = require("morgan");
 
 const server = express();
 const port = process.env.PORT || 3000;
-// require("./database/config")();
+require("./database/config")();
 
 server.use(logger("dev"));
 server.use(cors());
