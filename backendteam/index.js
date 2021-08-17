@@ -7,6 +7,8 @@ const server = express();
 const port = process.env.PORT || 3000;
 require("./database/config")();
 
+const authRoute = require("./route/authRoute");
+
 server.use(logger("dev"));
 server.use(cors());
 server.use(express.json());
@@ -15,6 +17,12 @@ server.use(
     extended: false,
   })
 );
+
+server.get("/", (req, res) => {
+  res.send("Hello");
+});
+
+server.use("/api", authRoute);
 
 server.all("*", (req, res) => {
   res.status(404).json({
