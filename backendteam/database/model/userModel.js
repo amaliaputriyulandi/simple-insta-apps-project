@@ -16,7 +16,8 @@ const userSchema = new Schema({
   },
   session_id: {
     type: String,
-    required: true,
+    required: false,
+    default: null,
   },
 });
 
