@@ -35,7 +35,7 @@ validate.signUp = async (req, res, next) => {
       });
     }
   } catch (error) {
-    res.status(500).send({
+    res.status(500).json({
       statusCode: 500,
       statusText: "Internal Server Error",
     });
