@@ -1,18 +1,17 @@
 import React from 'react'
-import './Register.css'
+import '../Register/Register.css'
 import person from '../../assets/person.jpg'
 import playstore from '../../assets/playstore.png'
 import appstore from '../../assets/appstore.png'
 import { useHistory } from 'react-router'
 
 
-const Register = () =>{
+const Login = () =>{
     const history = useHistory()
 
-    const handleSignIn = () =>{
-        history.push('/Login')
+    const handleSignUp = () =>{
+        history.push('/')
     }
-
     return(
         <div>
             <div className='background'></div>
@@ -24,33 +23,21 @@ const Register = () =>{
                     <div className='form-container'>
                         <form className='regist-form'>
                             <div>
-                                <h3>Registration Form</h3>
+                                <h3>Login Form</h3>
                             </div>
                             <div className='form-group'>
                                 <label>Email</label>
                                 <input type='text' placeholder='Enter your Email here'/>
                             </div>
                             <div className='form-group'>
-                                <label>Full Name</label>
-                                <input type='text' placeholder='Enter your Full Name here'/>
-                            </div>
-                            <div className='form-group'>
-                                <label>Username</label>
-                                <input type='text' placeholder='Enter your Username here'/>
-                            </div>
-                            <div className='form-group'>
                                 <label>Password</label>
                                 <input type='password' placeholder='Enter your Password here'/>
                             </div>
-                            <div className='term'>
-                                <input type='checkbox'/>
-                                By signing up, you agree to <span>Term Of Service</span>
-                            </div>
                             <div>
-                                <input type='submit' value='Register'/>
+                                <input type='submit' value='Sign In'/>
                             </div>
                             <div className='confirm'>
-                                Already have an Account? <span onClick={handleSignIn}>Sign In</span>
+                                Don't have an Account? <span onClick={handleSignUp}>Sign Up</span>
                             </div>
                             <div className='download'>
                                 Get our App.
@@ -68,4 +55,4 @@ const Register = () =>{
     )
 }
 
-export default Register
+export default Login
