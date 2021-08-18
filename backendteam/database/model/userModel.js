@@ -16,9 +16,11 @@ const userSchema = new Schema({
   },
   session_id: {
     type: String,
-    required: true,
+    required: false,
+    default: null,
   },
 });
 
 const User = mongoose.model("User", userSchema);
+
 module.exports = User;
