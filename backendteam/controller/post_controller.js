@@ -5,16 +5,9 @@ const cloudinary = require('../service/cloudinary')
 
 method.postPhoto = async (req, res) => {
     try{
-        const {userId} = req.body
+        const token = req.user
+        const userId = token._id
 
-        //token
-        // const token = req.token
-        // const userId = token._id
-        
-        //cookies
-        // const dtUser = req.user
-        // const userId = dtUser.user_id
-        
         const findPhoto = await Post.find({user_id: userId})
         const file = req.file
 
@@ -55,15 +48,9 @@ method.postPhoto = async (req, res) => {
 
 method.getPhotosByUser = async (req, res) => {
     try{
-        //const {userId} = req.body
+        const token = req.user
+        const userId = token._id
 
-        //token
-        // const token = req.token
-        // const userId = token._id
-        
-        //cookies
-        const dtUser = req.user
-        const userId = dtUser.user_id
         const findPhoto = await Post.find({user_id: userId})
 
         res.send({
@@ -80,15 +67,9 @@ method.getPhotosByUser = async (req, res) => {
 
 method.deletePhotoByUser = async (req, res) => {
     try{
-        const {userId} = req.body
-
-        //pakai token
-        // const token = req.token
-        // const userId = token._id
+        const token = req.user
+        const userId = token._id
         
-        // pakai cookies
-        // const dtUser = req.user
-        // const userId = dtUser.user_id
 
         const checkDt = await Post.findOne({ _id: req.params.id, user_id: userId });
         if(checkDt){

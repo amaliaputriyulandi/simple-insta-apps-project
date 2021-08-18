@@ -5,6 +5,8 @@ const { v4: uuidv4 } = require("uuid");
 
 const User = require("../database/model/userModel");
 
+const authTokens = {}
+
 exports.signup = async (req, res) => {
   try {
     let { email, username, password } = req.body;
@@ -51,14 +53,15 @@ exports.login = async (req, res) => {
 
       if (checkPassword) {
         const session_id = uuidv4();
+        
         findUser.session_id = session_id;
         findUser.save();
-
+        
         const generateToken = await jwt.sign(
           { id: findUser._id, session_id },
           process.env.SECRET_KEY
         );
-
+        
         res.status(200).json({
           statusCode: 200,
           statusText: "OK",

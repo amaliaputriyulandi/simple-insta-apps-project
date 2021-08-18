@@ -1,14 +1,26 @@
 const joi = require("joi");
 const jwt = require('jsonwebtoken');
+const {User} = require("../database/model")
 const cookiesMiddleware = {}
 
-cookiesMiddleware.checkCookies = (req, res, next) => {
-    const authToken = req.cookies['AuthToken']
-    console.log("🧐 ~ file: cookiesMiddleware.js ~ line 5 ~ authToken", authToken)
+const authTokens = {}
 
-    req.user = authTokens[authToken]
+cookiesMiddleware.checkCookies = async (req, res, next) => {
+    const session_id = req.cookies['AuthToken']
+    if(!session_id) return res.status(401).json({message: 'Failed to authenticate cookies'});
 
-    next()
+    try{
+        const findUser = await User.findOneAndDelete({session_id: session_id})
+        if(!findUser){
+            return res.status(401).json({message: 'Failed user not have session_id'});
+        }else{
+            req.user = findUser
+            next()
+        }
+
+    }catch(error){
+        res.status(400).json({message: 'No token provided.'});
+    }
 }
 
 cookiesMiddleware.checkToken = (req, res, next) => {
@@ -17,7 +29,7 @@ cookiesMiddleware.checkToken = (req, res, next) => {
 
     try {
         const verified = jwt.verify(token, process.env.SECRET_KEY);
-        req.token = verified;
+        req.user = verified;
         next();
     } catch (error) {
         res.status(400).json({message: 'No token provided.'});
