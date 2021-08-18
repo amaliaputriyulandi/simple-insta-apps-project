@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000;
 require("./database/config")();
 
 const postRoute = require('./route/post_route')
+const authRoute = require("./route/authRoute");
 
 server.use(logger("dev"));
 server.use(cors());
@@ -20,13 +21,14 @@ server.use(
 );
 server.use(cookieParser())
 server.use('/api',
-  postRoute
+  postRoute,
+  authRoute
 )
 
-server.get('/', (req, res) => {
-  res.send('Simple Insta App')
-});
 
+server.get("/", (req, res) => {
+  res.send("Hello");
+});
 
 server.all("*", (req, res) => {
   res.status(404).json({
