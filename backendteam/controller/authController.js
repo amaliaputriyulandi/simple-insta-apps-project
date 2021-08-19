@@ -51,14 +51,15 @@ exports.login = async (req, res) => {
 
       if (checkPassword) {
         const session_id = uuidv4();
+        
         findUser.session_id = session_id;
         findUser.save();
-
+        
         const generateToken = await jwt.sign(
           { id: findUser._id, session_id },
           process.env.SECRET_KEY
         );
-
+        
         res.status(200).json({
           statusCode: 200,
           statusText: "OK",
