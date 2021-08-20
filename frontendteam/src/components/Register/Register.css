@@ -54,7 +54,7 @@ form input[type=text], [type=password]{
    
 }
 
-form input[type=submit]{
+form input[type=submit],.btn{
     margin-top: 20px;
     width: 100%;
     padding : 13px;
@@ -67,7 +67,21 @@ form input[type=submit]{
     transition: all 0.3s ease 0s;
 }
 
-form input[type=submit]:hover{
+.btn_load{
+    margin-top: 20px;
+    width: 100%;
+    padding : 13px;
+    background-color: rgba(109, 51, 201);
+    border : none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 16px;
+    cursor: wait;
+
+}
+
+form input[type=submit]:hover,.btn:hover{
     cursor:pointer;
     background-color: rgba(109, 51, 201);
 }

@@ -4,6 +4,7 @@ import Register from './components/Register/Register';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
+
 function App() {
   return (
     <div className="App">
