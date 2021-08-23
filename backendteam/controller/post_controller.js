@@ -6,13 +6,12 @@ const cloudinary = require('../service/cloudinary')
 method.postPhoto = async (req, res) => {
     try{
         const token = req.user
-        const userId = token._id
-
-        const findPhoto = await Post.find({user_id: userId})
+        const userId = token.id
+        
         const file = req.file
 
         if(file === undefined){
-            res.send({
+            res.status(400).send({
                 statusCode: 400,
                 statusText: "Failed",
                 message: " You must to upload file",
@@ -49,7 +48,7 @@ method.postPhoto = async (req, res) => {
 method.getPhotosByUser = async (req, res) => {
     try{
         const token = req.user
-        const userId = token._id
+        const userId = token.id
 
         const findPhoto = await Post.find({user_id: userId})
 
@@ -68,7 +67,7 @@ method.getPhotosByUser = async (req, res) => {
 method.deletePhotoByUser = async (req, res) => {
     try{
         const token = req.user
-        const userId = token._id
+        const userId = token.id
         
 
         const checkDt = await Post.findOne({ _id: req.params.id, user_id: userId });

@@ -5,8 +5,6 @@ const { v4: uuidv4 } = require("uuid");
 
 const User = require("../database/model/userModel");
 
-const authTokens = {}
-
 exports.signup = async (req, res) => {
   try {
     let { email, username, password } = req.body;
