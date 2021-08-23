@@ -10,3 +10,7 @@ https://simple-insta-app.herokuapp.com/
 | POST    | /api/signup            | Register a user |
 | POST    | /api/login             | Login a user    |
 | GET     | /api/logout            | Logout a user   |
+
+
+#POSTMAN DOCUMENTATION
+https://documenter.getpostman.com/view/17136026/TzzANGwi
