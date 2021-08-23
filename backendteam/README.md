@@ -2,8 +2,6 @@
 
 https://simple-insta-app.herokuapp.com/
 
-localhost:3000/api/logout
-
 | methods | Endpoint               | Description     |
 | ------- | ---------------------- | --------------- |
 | POST    | /api/postPhoto         | Post a Photo    |
